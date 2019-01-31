@@ -1,1 +1,1 @@
-Chapter 5.7 - Creating a Population Script
+Chapter 5.8 - Workflow: Model Setup (Exercises)
