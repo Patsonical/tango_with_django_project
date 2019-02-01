@@ -1,1 +1,1 @@
-Chapter 5.8 - Workflow: Model Setup (Exercises)
+Chapter 6 - Models, Templates and Views
