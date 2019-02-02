@@ -5,6 +5,8 @@ import django
 django.setup()
 from rango.models import Category, Page
 
+import random
+
 def populate():
     # First, we will create lists of dictionaries containing the pages
     # we want to add into each category.
@@ -33,9 +35,20 @@ def populate():
         "url":"http://bottlepy.org/docs/dev/"},
         {"title":"Flask",
         "url":"http://flask.pocoo.org"} ]
+    functional = [
+        {"title":"Xmonad Homepage",
+        "url":"https://xmonad.org/",
+        "views":16},
+        {"title":"Haskell Wikibook",
+        "url":"https://en.wikibooks.org/wiki/Haskell",
+        "views":32},
+        {"title":"Learn You a Haskell for Great Good!",
+        "url":"http://learnyouahaskell.com/chapters",
+        "views":17} ]
     cats = {"Python": {"pages": python_pages, "views":128, "likes":64},
             "Django": {"pages": django_pages, "views":64, "likes":32},
-            "Other Frameworks": {"pages": other_pages, "views":32, "likes":16} }
+            "Other Frameworks": {"pages": other_pages, "views":32, "likes":16},
+            "Functional Programming": {"pages": functional, "views":256, "likes":255}, }
 
     # If you want to add more catergories or pages,
     # add them to the dictionaries above.
@@ -49,7 +62,7 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(name=cat, views=iidez("views", cat_data), likes=iidez("likes", cat_data))
         for p in cat_data["pages"]:
-            add_page(c, p["title"], p["url"])
+            add_page(cat=c, title=p["title"], url=p["url"], views=iider("views", cat_data["pages"]))
 
     # Print out the categories we have added.
     for c in Category.objects.all():
@@ -61,6 +74,13 @@ def iidez(x, d):    #If In Dictionary Else Zero
         return d[x]
     else:
         return 0
+
+def iider(x, d):    #If In Dictionary Else Random
+    if x in d:
+        return d[x]
+    else:
+        return random.randint(1,256)
+
 
 def add_page(cat, title, url, views=0):
     p = Page.objects.get_or_create(category=cat, title=title)[0]

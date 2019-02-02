@@ -1,1 +1,5 @@
-Chapter 6 - Models, Templates and Views
+Chapter 6 exercises[2:4]
+
+then
+
+Chapter 7. Forms
