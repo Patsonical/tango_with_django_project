@@ -17,8 +17,8 @@ def populate():
     python_pages = [
         {"title": "Official Python Tutorial",
         "url":"http://docs.python.org/2/tutorial/",
-        "views":128,
-        "likes":64},
+        "views":32,
+        "likes":16},
         {"title":"How to Think like a Computer Scientist",
         "url":"http://www.greenteapress.com/thinkpython/"},
         {"title":"Learn Python in 10 Minutes",
@@ -62,7 +62,7 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(name=cat, views=iidez("views", cat_data), likes=iidez("likes", cat_data))
         for p in cat_data["pages"]:
-            add_page(cat=c, title=p["title"], url=p["url"], views=iider("views", cat_data["pages"]))
+            add_page(cat=c, title=p["title"], url=p["url"], views=iider("views", p))
 
     # Print out the categories we have added.
     for c in Category.objects.all():
@@ -79,7 +79,7 @@ def iider(x, d):    #If In Dictionary Else Random
     if x in d:
         return d[x]
     else:
-        return random.randint(1,256)
+        return random.randint(0,16)
 
 
 def add_page(cat, title, url, views=0):

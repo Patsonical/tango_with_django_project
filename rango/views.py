@@ -4,14 +4,13 @@ from rango.models import Category, Page
 
 def index(request):
     category_list = Category.objects.order_by("-likes")[:5]
-    context_dict = {"categories": category_list, "bold_message" : "Crunchy, creamy, cookie, candy, cupcake!"}
+    page_list     = Page.objects.order_by("-views")[:5]
+    context_dict  = {"categories": category_list, "pages": page_list}
     return render(request, "rango/index.html", context=context_dict)
 
 def about(request):
     context_dict = {}
     return render(request, "rango/about.html", context=context_dict)
-    #response = "Rango says here is the about page. </br> <a href='/rango/'>Index</a>"
-    #return HttpResponse(response)
 
 def show_category(request, category_name_slug):
     context_dict = {}
