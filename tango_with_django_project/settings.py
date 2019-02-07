@@ -129,3 +129,6 @@ STATICFILES_DIRS    = [STATIC_DIR, ]
 
 MEDIA_URL           = "/media/"
 MEDIA_ROOT          = MEDIA_DIR
+
+# Redirect not logged-in users
+LOGIN_URL           = "/rango/login/"

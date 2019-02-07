@@ -1,1 +1,1 @@
-Chapter 8.4 - The render() Method and the request Context
+Chapter 10. Cookies and Sessions

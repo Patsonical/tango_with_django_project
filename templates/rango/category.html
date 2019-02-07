@@ -24,7 +24,9 @@
 			The specified category does not exist!
 		{% endif %}
 	</div>
-	<div>
-		<a href="/rango/category/{{category.slug}}/add_page/">Add a Page</a> <br><br>
-	</div>
+	{% if user.is_authenticated %}
+		<div>
+			<a href="/rango/category/{{category.slug}}/add_page/">Add a Page</a> <br><br>
+		</div>
+	{% endif %}
 {% endblock %}
