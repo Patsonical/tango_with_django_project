@@ -1,1 +1,1 @@
-Chapter 8. Working with Templates
+Chapter 8.4 - The render() Method and the request Context
